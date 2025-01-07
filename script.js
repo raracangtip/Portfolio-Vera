@@ -89,3 +89,40 @@ document.querySelectorAll('.portfolio .box-container .box img').forEach(image =>
 document.querySelector('.popup-image span').onclick = () => {
     document.querySelector('.popup-image').style.display = 'none';
 }
+
+// Ambil semua tombol filter
+const filterButtons = document.querySelectorAll('.filter button');
+// Ambil semua box galeri
+const galleryItems = document.querySelectorAll('.box-container .box');
+
+// Tampilkan semua item secara default
+galleryItems.forEach(item => {
+    item.style.display = 'block'; // Tampilkan semua item saat halaman dimuat
+});
+
+// Tambahkan event listener untuk setiap tombol filter
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Hapus kelas 'active' dari semua tombol
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Tambahkan kelas 'active' ke tombol yang diklik
+        button.classList.add('active');
+
+        // Ambil nilai filter dari data-filter
+        const filterValue = button.getAttribute('data-filter');
+
+        // Tampilkan atau sembunyikan item galeri berdasarkan kategori
+        galleryItems.forEach(item => {
+            if (filterValue === 'all') {
+                item.style.display = 'block'; // Tampilkan semua item
+            } else {
+                // Sembunyikan item yang tidak sesuai dengan kategori
+                if (item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block'; // Tampilkan item yang sesuai
+                } else {
+                    item.style.display = 'none'; // Sembunyikan item yang tidak sesuai
+                }
+            }
+        });
+    });
+});
