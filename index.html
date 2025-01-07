@@ -164,50 +164,74 @@
         </div>
     </section>
     <!-- service section ends -->
-    <!-- portfolio section starts -->
+   
+    <!-- Filter section -->
+    <div class="filter">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="certificates">Sertifikat</button>
+        <button data-filter="projects">Projek</button>
+        <button data-filter="photos">Foto</button>
+    </div>
+
+    <!-- Galeri Section -->
     <section class="portfolio" id="portfolio">
-        <h1 class="heading">my <span>portfolio</span></h1>
+        <h1 class="heading">my <span>gallery</span></h1>
         <div class="box-container">
 
-                        <div class="box">
-                <img src="jungkook.jpeg" alt="gambar 1" title="portfolio 1">
+
+            <div class="box" data-category="certificates">
+                <img src="sertifikat html.png" alt="Sertifikat HTML" title="Sertifikat HTML">
                 <div class="content">
-                    <h3>pict 01</h3>
+                    <h3>Sertifikat HTML</h3>
                 </div>
             </div>
 
-            <div class="box">
-                <img src="pesawat.jpg" alt="gambar 2" title="portfolio 2">
+            <div class="box" data-category="certificates">
+                <img src="sertifikat css.jpg" alt="Sertifikat CSS" title="Sertifikat CSS">
                 <div class="content">
-                    <h3>pict 02</h3>
+                    <h3>Sertifikat CSS</h3>
                 </div>
             </div>
 
-            <div class="box">
-                <img src="pantai.jpeg" alt="gambar 3" title="portfolio 3">
+            <div class="box" data-category="projects">
+                <img src="js intermediate.jpg" alt="gambar makanan" title="portfolio 1">
                 <div class="content">
-                    <h3>pict 03</h3>
+                    <h3>sertifikat js intermediate</h3>
                 </div>
             </div>
 
-            <div class="box">
-                <img src="blokm.jpeg" alt="gambar 4" title="portfolio 4">
+            <div class="box" data-category="projects">
+                <img src="form login.png" alt="gambar 1" title="portfolio 1">
                 <div class="content">
-                    <h3>pict 04</h3>
+                    <h3>form login</h3>
                 </div>
             </div>
 
-            <div class="box">
-                <img src="me.jpeg" alt="gambar 5" title="portfolio 5">
+            <div class="box" data-category="photos">
+                <img src="portfolio.png" alt="gambar 1" title="portfolio 1">
                 <div class="content">
-                    <h3>project 05</h3>
+                    <h3>portfolio</h3>
                 </div>
             </div>
 
-            <div class="box">
-                <img src="psm2.jpeg" alt="gambar 6" title="portfolio 6">
+            <div class="box" data-category="photos">
+                <img src="dashboard.png" alt="gambar 1" title="portfolio 1">
                 <div class="content">
-                    <h3>project 06</h3>
+                    <h3>admin dashboard</h3>
+                </div>
+            </div>
+
+            <div class="box" data-category="photos">
+                <img src="game snake.png" alt="gambar 1" title="portfolio 1">
+                <div class="content">
+                    <h3>game snake</h3>
+                </div>
+            </div>
+
+            <div class="box" data-category="photos">
+                <img src="diagram.png" alt="gambar 1" title="portfolio 1">
+                <div class="content">
+                    <h3>diagram penjualan</h3>
                 </div>
             </div>
 
@@ -243,7 +267,7 @@
             <div class="box">
                 <img src="js intermediate.jpg" alt="Sertifikat 4">
                 <div class="content">
-                    <h3>Sertifikat Javascript Intermediate</h3>
+                    <h3>Sertifikat Javascript intermediate</h3>
                     <p>Diperoleh dari Sololearn</p>
                 </div>
             <!-- Tambahkan box lain untuk sertifikat tambahan jika ada -->
@@ -265,15 +289,29 @@
     <!-- credit section -->
     <div class="credits">created by <span>Vera Oktaviani</span> <i class="far fa-heart"></i></div>
 
+    <!-- Google Maps Section -->
+    <section class="map" id="map">
+        <h1 class="heading">My <span>Location</span></h1>
+        <div id="google-map" style="width: 100%; height: 400px;"></div>
+    </section>
 
+    
 
-
-
-
-
-
-
-
+<!-- Script -->
+<script>
+    document.getElementById('filter-category').addEventListener('change', function () {
+        const selectedCategory = this.value;
+        const items = document.querySelectorAll('[data-category]');
+        items.forEach(item => {
+            if (selectedCategory === 'all' || item.dataset.category === selectedCategory) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
 
 
 
@@ -281,6 +319,21 @@
 
     <!-- javascript link -->
     <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            // Lokasi yang ingin ditampilkan
+            const location = { lat: -6.3536604, lng: 106.6886799 }; // Koordinat baru
+            const map = new google.maps.Map(document.getElementById("google-map"), {
+                zoom: 15,
+                center: location,
+            });
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+        }
+    </script>
 
 
 
