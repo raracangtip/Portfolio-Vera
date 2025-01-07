@@ -629,3 +629,51 @@ a[href="website vera.html"] {
     width: 750px;
     object-fit: cover;
 }
+
+.map {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.map h1 {
+    font-size: 3rem;
+    color: var(--black);
+}
+
+.map #google-map {
+    width: 100%;
+    height: 400px; /* Tinggi peta */
+    border-radius: .5rem; /* Sudut melengkung */
+    box-shadow: var(--box-shadow);
+}
+
+.filter {
+    text-align: center;
+    margin: 2rem 0;
+    display: flex; /* Menggunakan flexbox untuk tata letak responsif */
+    flex-wrap: wrap; /* Membungkus tombol ke baris baru jika diperlukan */
+    justify-content: center; /* Menyelaraskan tombol di tengah */
+}
+
+.filter button {
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    background: none;
+    color: var(--black);
+    border: 1px solid var(--black);
+    margin: 0.5rem; /* Menambahkan margin untuk jarak antar tombol */
+    transition: background 0.3s, color 0.3s;
+    flex: 1 1 150px; /* Membuat tombol fleksibel dengan lebar minimum 150px */
+}
+
+.filter button.active {
+    background: var(--blue);
+    color: #fff;
+}
+
+.filter button:hover {
+    background: var(--blue);
+    color: #fff;
+}
